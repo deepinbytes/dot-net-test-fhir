@@ -5,7 +5,7 @@ SQL Server 2008R2 Express and above
 Nunit 3.0
 
 Getting started
-1.Open FHIRClientApp present in the Release folder
+1.Open FHIRClientApp present in the Release.zip file
 
 
 Getting Started using solution:
