@@ -67,14 +67,14 @@ namespace FHIRClientApp.Forms.Patients
         {
             try
             {
-
                 this.FHIRServerService = new FHIRServerAccessService(new Uri(textBox2.Text.ToString()));
+                return this.FHIRServerService.FetchAll();
             }
             catch (Exception ex)
             {
-                this.ShowErrorMessage(ex);
+                
             }
-            return this.FHIRServerService.FetchAll();
+            return null;
         }
 
         /// <summary>
@@ -689,23 +689,46 @@ namespace FHIRClientApp.Forms.Patients
             {
                 //Get Data from server
                 data = FetchtAllFromServer();
-                data.Columns.Remove(Resources.RemoveSoftDelete);
-                data.Columns.Remove(Resources.RemoveMaritalStatus);
-                data.Columns.Remove(Resources.RemoveHealthStatus);
-                data.Columns.Remove(Resources.RemoveId);
-                // Check if this code is executed on some other thread than UI thread
-                if (InvokeRequired)
+                if (data != null)
                 {
-                    BeginInvoke(new Action(() =>
-                    {
-                        // Load data to Grid
-                        LoadDataAndEnableControls(data);
-                    }));
-                }
 
+
+                    data.Columns.Remove(Resources.RemoveSoftDelete);
+                    data.Columns.Remove(Resources.RemoveMaritalStatus);
+                    data.Columns.Remove(Resources.RemoveHealthStatus);
+                    data.Columns.Remove(Resources.RemoveId);
+                    // Check if this code is executed on some other thread than UI thread
+                    if (InvokeRequired)
+                    {
+                        BeginInvoke(new Action(() =>
+                        {
+                            // Load data to Grid
+                       LoadServerDataGridView(data);
+                        LoadDataAndEnableControls();
+                        }));
+                    }
+                }
             }).Finally(() =>
-                MessageBox.Show(Resources.Fetch + data.Rows.Count + Resources.From_Server, Resources.Success, MessageBoxButtons.OK,
-                        MessageBoxIcon.Information)
+                {
+                    if (data != null)
+                        MessageBox.Show(Resources.Fetch + data.Rows.Count + Resources.From_Server, Resources.Success, MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                    else
+                    {
+                        MessageBox.Show(Resources.InvalidServer, Resources.System_Error_Message_Title,
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error);
+
+                        if (InvokeRequired)
+                    {
+                        BeginInvoke(new Action(() =>
+                        {
+                            // Load data to Grid
+                            LoadDataAndEnableControls();
+                        }));
+                    }
+                    }
+                }
            );
             o.Wait();
 
@@ -720,31 +743,53 @@ namespace FHIRClientApp.Forms.Patients
             {
                 //Get Data from server
                 data = SearchFromServer(filter);
-                data.Columns.Remove(Resources.RemoveSoftDelete);
-                data.Columns.Remove(Resources.RemoveMaritalStatus);
-                data.Columns.Remove(Resources.RemoveHealthStatus);
-                data.Columns.Remove(Resources.RemoveId);
-                // Check if this code is executed on some other thread than UI thread
-                if (InvokeRequired)
+                if (data != null)
                 {
-                    BeginInvoke(new Action(() =>
-                    {
-                        // Load data to Grid
-                        LoadDataAndEnableControls(data);
-                    }));
-                }
 
+
+                    data.Columns.Remove(Resources.RemoveSoftDelete);
+                    data.Columns.Remove(Resources.RemoveMaritalStatus);
+                    data.Columns.Remove(Resources.RemoveHealthStatus);
+                    data.Columns.Remove(Resources.RemoveId);
+                    // Check if this code is executed on some other thread than UI thread
+                    if (InvokeRequired)
+                    {
+                        BeginInvoke(new Action(() =>
+                        {
+                            // Load data to Grid
+                            LoadServerDataGridView(data);
+                            LoadDataAndEnableControls();
+                        }));
+                    }
+                }
             }).Finally(() =>
-                  MessageBox.Show(Resources.Fetch + data.Rows.Count + Resources.From_Server, Resources.Success, MessageBoxButtons.OK,
-                        MessageBoxIcon.Information)
+                {
+                    if (data != null)
+                        MessageBox.Show(Resources.Fetch + data.Rows.Count + Resources.From_Server, Resources.Success, MessageBoxButtons.OK,
+                              MessageBoxIcon.Information);
+                    else
+                    {
+                        MessageBox.Show(Resources.InvalidServer, Resources.System_Error_Message_Title,
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error);
+
+                        if (InvokeRequired)
+                        {
+                            BeginInvoke(new Action(() =>
+                            {
+                                // Load data to Grid
+                                LoadDataAndEnableControls();
+                            }));
+                        }
+                    }
+                }
            );
             o.Wait();
 
         }
 
-        private void LoadDataAndEnableControls(DataTable ds)
+        private void LoadDataAndEnableControls()
         {
-            LoadServerDataGridView(ds);
             button4.Enabled = true;
             button3.Enabled = true;
             button1.Enabled = true;

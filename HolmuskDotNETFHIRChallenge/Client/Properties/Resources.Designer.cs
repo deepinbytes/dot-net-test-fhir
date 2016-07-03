@@ -187,6 +187,15 @@ namespace FHIRClientApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Server.
+        /// </summary>
+        internal static string InvalidServer {
+            get {
+                return ResourceManager.GetString("InvalidServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string Login_Login_Button_Text {

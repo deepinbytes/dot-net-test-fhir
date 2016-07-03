@@ -34,8 +34,15 @@ namespace FHIR.Data.Service
        }
         private DataTable Search(SearchParams searchParams)
         {
-            var result = _client.Search(searchParams, "Patient");
-            return result.Entry.Select(i=>i.Resource as Patient).Select(ConvertFHIREntityToLocal).OfType<PatientEntity>().ToList().ToDataTable<PatientEntity>();
+            try
+            {
+                var result = _client.Search(searchParams, "Patient");
+                return result.Entry.Select(i => i.Resource as Patient).Select(ConvertFHIREntityToLocal).OfType<PatientEntity>().ToList().ToDataTable<PatientEntity>();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         private PatientEntity ConvertFHIREntityToLocal(Patient fhirPatient)
