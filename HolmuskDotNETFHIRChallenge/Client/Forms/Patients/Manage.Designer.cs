@@ -34,7 +34,7 @@
             this.tabRegistration = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabRegister = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtComments = new System.Windows.Forms.TextBox();
             this.Comments = new System.Windows.Forms.Label();
             this.lblHealthStatusRequired = new System.Windows.Forms.Label();
             this.lblMaritalStatusRequired = new System.Windows.Forms.Label();
@@ -54,8 +54,8 @@
             this.lblName = new System.Windows.Forms.Label();
             this.tabSearchManage = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCommentsUpd = new System.Windows.Forms.TextBox();
+            this.txtFamilyNameUpd = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.QueryString = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -86,9 +86,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.ServerQuery = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ServerURI = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.PrintReport = new System.Drawing.Printing.PrintDocument();
@@ -143,7 +143,7 @@
             // 
             // tabRegister
             // 
-            this.tabRegister.Controls.Add(this.textBox1);
+            this.tabRegister.Controls.Add(this.txtComments);
             this.tabRegister.Controls.Add(this.Comments);
             this.tabRegister.Controls.Add(this.lblHealthStatusRequired);
             this.tabRegister.Controls.Add(this.lblMaritalStatusRequired);
@@ -172,12 +172,12 @@
             // 
             // textBox1
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(111, 102);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(693, 99);
-            this.textBox1.TabIndex = 24;
+            this.txtComments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtComments.Location = new System.Drawing.Point(111, 102);
+            this.txtComments.Multiline = true;
+            this.txtComments.Name = "textBox1";
+            this.txtComments.Size = new System.Drawing.Size(693, 99);
+            this.txtComments.TabIndex = 24;
             // 
             // Comments
             // 
@@ -351,8 +351,8 @@
             // 
             this.tabSearchManage.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tabSearchManage.Controls.Add(this.label7);
-            this.tabSearchManage.Controls.Add(this.textBox4);
-            this.tabSearchManage.Controls.Add(this.textBox3);
+            this.tabSearchManage.Controls.Add(this.txtCommentsUpd);
+            this.tabSearchManage.Controls.Add(this.txtFamilyNameUpd);
             this.tabSearchManage.Controls.Add(this.label1);
             this.tabSearchManage.Controls.Add(this.label10);
             this.tabSearchManage.Controls.Add(this.label11);
@@ -388,20 +388,20 @@
             // 
             // textBox4
             // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Location = new System.Drawing.Point(947, 317);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(256, 63);
-            this.textBox4.TabIndex = 42;
+            this.txtCommentsUpd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCommentsUpd.Location = new System.Drawing.Point(947, 317);
+            this.txtCommentsUpd.Multiline = true;
+            this.txtCommentsUpd.Name = "textBox4";
+            this.txtCommentsUpd.Size = new System.Drawing.Size(256, 63);
+            this.txtCommentsUpd.TabIndex = 42;
             // 
             // textBox3
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(944, 197);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(244, 21);
-            this.textBox3.TabIndex = 41;
+            this.txtFamilyNameUpd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFamilyNameUpd.Location = new System.Drawing.Point(944, 197);
+            this.txtFamilyNameUpd.Name = "textBox3";
+            this.txtFamilyNameUpd.Size = new System.Drawing.Size(244, 21);
+            this.txtFamilyNameUpd.TabIndex = 41;
             // 
             // label1
             // 
@@ -562,7 +562,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox5);
+            this.tabPage3.Controls.Add(this.QueryString);
             this.tabPage3.Controls.Add(this.btnRefresh);
             this.tabPage3.Controls.Add(this.btnSearch);
             this.tabPage3.Controls.Add(this.label3);
@@ -576,11 +576,11 @@
             // 
             // textBox5
             // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(96, 36);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(326, 21);
-            this.textBox5.TabIndex = 10;
+            this.QueryString.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.QueryString.Location = new System.Drawing.Point(96, 36);
+            this.QueryString.Name = "textBox5";
+            this.QueryString.Size = new System.Drawing.Size(326, 21);
+            this.QueryString.TabIndex = 10;
             // 
             // btnRefresh
             // 
@@ -695,9 +695,9 @@
             this.tabFHIRControl.Controls.Add(this.button5);
             this.tabFHIRControl.Controls.Add(this.button3);
             this.tabFHIRControl.Controls.Add(this.label4);
-            this.tabFHIRControl.Controls.Add(this.textBox6);
+            this.tabFHIRControl.Controls.Add(this.ServerQuery);
             this.tabFHIRControl.Controls.Add(this.button1);
-            this.tabFHIRControl.Controls.Add(this.textBox2);
+            this.tabFHIRControl.Controls.Add(this.ServerURI);
             this.tabFHIRControl.Controls.Add(this.label6);
             this.tabFHIRControl.Location = new System.Drawing.Point(4, 24);
             this.tabFHIRControl.Name = "tabFHIRControl";
@@ -739,11 +739,11 @@
             // 
             // textBox6
             // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Location = new System.Drawing.Point(135, 71);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(523, 21);
-            this.textBox6.TabIndex = 4;
+            this.ServerQuery.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ServerQuery.Location = new System.Drawing.Point(135, 71);
+            this.ServerQuery.Name = "textBox6";
+            this.ServerQuery.Size = new System.Drawing.Size(523, 21);
+            this.ServerQuery.TabIndex = 4;
             // 
             // button1
             // 
@@ -757,12 +757,12 @@
             // 
             // textBox2
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(135, 28);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(523, 21);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "http://spark.furore.com/fhir";
+            this.ServerURI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ServerURI.Location = new System.Drawing.Point(135, 28);
+            this.ServerURI.Name = "textBox2";
+            this.ServerURI.Size = new System.Drawing.Size(523, 21);
+            this.ServerURI.TabIndex = 1;
+            this.ServerURI.Text = "http://spark.furore.com/fhir";
             // 
             // label6
             // 
@@ -858,24 +858,24 @@
         private System.Windows.Forms.Label lbl2HealthStatus;
         private System.Windows.Forms.ComboBox cmb2GenderStatus;
         private System.Windows.Forms.Label lbl2MaritalStatus;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtComments;
         private System.Windows.Forms.Label Comments;
         private System.Windows.Forms.TabPage tabServer;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabFHIRControl;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ServerURI;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCommentsUpd;
+        private System.Windows.Forms.TextBox txtFamilyNameUpd;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox QueryString;
         private System.Windows.Forms.DataGridView dataGridViewServer;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox ServerQuery;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
     }

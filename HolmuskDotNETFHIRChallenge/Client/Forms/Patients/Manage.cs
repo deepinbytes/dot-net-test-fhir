@@ -67,14 +67,14 @@ namespace FHIRClientApp.Forms.Patients
         {
             try
             {
-                this.FHIRServerService = new FHIRServerAccessService(new Uri(textBox2.Text.ToString()));
+                this.FHIRServerService = new FHIRServerAccessService(new Uri(ServerURI.Text.ToString()));
                 return this.FHIRServerService.FetchAll();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
+                return null;
             }
-            return null;
+  
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace FHIRClientApp.Forms.Patients
         {
             try
             {
-                this.FHIRServerService = new FHIRServerAccessService(new Uri(textBox2.Text.ToString()));
+                this.FHIRServerService = new FHIRServerAccessService(new Uri(ServerURI.Text.ToString()));
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace FHIRClientApp.Forms.Patients
         /// </summary>
         private void ResetSearch()
         {
-            textBox5.Text = String.Empty;
+            QueryString.Text = String.Empty;
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace FHIRClientApp.Forms.Patients
                         Gender = (Gender)cmbGenderStatus.SelectedValue,
                         FamilyName = txtFamilyName.Text.Trim(),
 
-                        Comments = textBox1.Text,
+                        Comments = txtComments.Text,
                         CreatedAt = DateTimeOffset.Now,
                         LastModifiedAt = DateTimeOffset.Now
                     };
@@ -463,7 +463,7 @@ namespace FHIRClientApp.Forms.Patients
         {
             DisableButtons();
             this.Cursor = Cursors.WaitCursor;
-            LoadLocalData(textBox5.Text.ToString());
+            LoadLocalData(QueryString.Text.ToString());
 
 
         }
@@ -512,10 +512,10 @@ namespace FHIRClientApp.Forms.Patients
                         Id = this.memberId,
                         Name = txt2Name.Text.Trim(),
                         DateOfBirth = dt2DateOfBirth.Value,
-                        FamilyName = textBox3.Text.Trim(),
+                        FamilyName = txtFamilyNameUpd.Text.Trim(),
                         HealthStatus = (int)cmb2HealthStatus.SelectedValue,
                         Gender = (Gender)cmb2GenderStatus.SelectedValue,
-                        Comments = textBox4.Text.Trim(),
+                        Comments = txtCommentsUpd.Text.Trim(),
                         LastModifiedAt = DateTimeOffset.Now
                     };
 
@@ -652,9 +652,9 @@ namespace FHIRClientApp.Forms.Patients
                     DataRow dataRow = this.patientService.GetById(memberId);
 
                     txt2Name.Text = dataRow[Resources.Name].ToString();
-                    textBox3.Text = dataRow[Resources.FamilyName].ToString();
+                    txtFamilyNameUpd.Text = dataRow[Resources.FamilyName].ToString();
                     dt2DateOfBirth.Value = Convert.ToDateTime(dataRow[Resources.DateOfBirth]);
-                    textBox4.Text = dataRow[Resources.Comments].ToString();
+                    txtCommentsUpd.Text = dataRow[Resources.Comments].ToString();
                     cmb2GenderStatus.SelectedItem = (Gender)dataRow[Resources.Gender];
                     cmb2HealthStatus.SelectedItem = (HealthStatus)dataRow[Resources.HealthStatus];
 
@@ -801,7 +801,7 @@ namespace FHIRClientApp.Forms.Patients
         /// </summary>
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox6.Text.Trim() == string.Empty)
+            if (ServerQuery.Text.Trim() == string.Empty)
             {
                 MessageBox.Show(Resources.SearchQueryError, Resources.System_Error_Message_Title,
                          MessageBoxButtons.OK,
@@ -813,7 +813,7 @@ namespace FHIRClientApp.Forms.Patients
                 button3.Enabled = false;
                 button1.Enabled = false;
                 button5.Enabled = false;
-                Thread loadDataThread = new Thread(() => FetchFHIRDataBackground(textBox6.Text.ToString()));
+                Thread loadDataThread = new Thread(() => FetchFHIRDataBackground(ServerQuery.Text.ToString()));
                 loadDataThread.Start();
             }
 
@@ -876,7 +876,7 @@ namespace FHIRClientApp.Forms.Patients
         private void button5_Click(object sender, EventArgs e)
         {
             button4.Enabled = false;
-            textBox6.Text = string.Empty;
+            ServerQuery.Text = string.Empty;
             this.dataGridViewServer.DataSource = null;
             this.dataGridViewServer.Rows.Clear();
             this.InitilizeServerDataGridViewStyle();
